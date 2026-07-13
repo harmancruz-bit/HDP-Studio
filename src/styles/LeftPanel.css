@@ -9,38 +9,51 @@
 }
 
 .panel-header {
-  padding: 12px 16px;
+  padding: 16px;
   border-bottom: 1px solid #1a1a2e;
   flex-shrink: 0;
+  background: #0a0a0f;
 }
 
 .panel-header h3 {
-  margin: 0;
+  margin: 0 0 4px 0;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   color: #e0e0e0;
+  letter-spacing: -0.3px;
 }
 
-.library-sections {
+.panel-subtitle {
+  margin: 0;
+  font-size: 12px;
+  color: #666;
+  font-weight: 400;
+}
+
+.library-grid {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.library-sections::-webkit-scrollbar {
+.library-grid::-webkit-scrollbar {
   width: 6px;
 }
 
-.library-sections::-webkit-scrollbar-track {
+.library-grid::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.library-sections::-webkit-scrollbar-thumb {
+.library-grid::-webkit-scrollbar-thumb {
   background: #2a2a3e;
   border-radius: 3px;
 }
 
-.library-sections::-webkit-scrollbar-thumb:hover {
+.library-grid::-webkit-scrollbar-thumb:hover {
   background: #3a3a4e;
 }
 

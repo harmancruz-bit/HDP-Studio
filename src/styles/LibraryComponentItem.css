@@ -1,0 +1,115 @@
+.library-component-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: #0f0f1e;
+  border: 1px solid #2a2a3e;
+  border-radius: 8px;
+  cursor: grab;
+  transition: all 0.2s ease;
+  outline: none;
+  user-select: none;
+}
+
+.library-component-item:hover {
+  background: #1a1a2e;
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+  transform: translateX(2px);
+}
+
+.library-component-item:active {
+  cursor: grabbing;
+  transform: translateX(2px) scale(0.98);
+}
+
+.drag-handle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: #666;
+  flex-shrink: 0;
+  transition: color 0.2s ease;
+}
+
+.library-component-item:hover .drag-handle {
+  color: #667eea;
+}
+
+.drag-handle svg {
+  width: 16px;
+  height: 16px;
+}
+
+.component-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.component-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.component-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.component-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.component-name {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: #e0e0e0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-description {
+  margin: 2px 0 0 0;
+  font-size: 11px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.library-component-item:hover .component-name {
+  color: #ffffff;
+}
+
+.library-component-item:hover .component-description {
+  color: #a0a0b0;
+}
+
+@media (max-width: 768px) {
+  .library-component-item {
+    padding: 6px;
+    border-radius: 6px;
+  }
+
+  .component-name {
+    font-size: 11px;
+  }
+
+  .component-description {
+    font-size: 10px;
+  }
+}
