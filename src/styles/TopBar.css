@@ -1,0 +1,142 @@
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  background: #0f0f1e;
+  border-bottom: 1px solid #1a1a2e;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  min-width: 200px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0e0e0;
+  letter-spacing: -0.3px;
+}
+
+.top-bar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.project-name-input {
+  padding: 6px 12px;
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 6px;
+  color: #e0e0e0;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+}
+
+.project-name-input:focus {
+  border-color: #667eea;
+  background: #20202e;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 400px;
+  justify-content: flex-end;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid #2a2a3e;
+  border-radius: 6px;
+  color: #a0a0b0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.toolbar-btn:hover {
+  color: #e0e0e0;
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.toolbar-btn:active {
+  transform: scale(0.95);
+}
+
+.toolbar-divider {
+  width: 1px;
+  height: 24px;
+  background: #2a2a3e;
+}
+
+.profile-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.profile-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .top-bar {
+    padding: 0 12px;
+    gap: 12px;
+  }
+
+  .top-bar-left {
+    min-width: auto;
+  }
+
+  .logo-text {
+    display: none;
+  }
+
+  .top-bar-center {
+    display: none;
+  }
+
+  .top-bar-right {
+    min-width: auto;
+    gap: 8px;
+  }
+}

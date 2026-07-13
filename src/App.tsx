@@ -1,15 +1,13 @@
-import React from 'react'
-import TemplatesGallery from './components/templates/TemplatesGallery'
-import TopNavBar from './components/TopNavBar'
-import LeftSidebar from './components/LeftSidebar'
-import RightInspector from './components/RightInspector'
-import BottomPanel from './components/BottomPanel'
-import WorkspaceCanvas from './components/WorkspaceCanvas'
+import React, { useState } from 'react'
+import BuilderWorkspace from './components/workspace/BuilderWorkspace'
+import './styles/App.css'
 
 export default function App() {
+  const [projectName] = useState('My Project')
+
   return (
     <div className="app-root">
-      <TemplatesGallery />
+      <BuilderWorkspace projectName={projectName} />
     </div>
   )
 }

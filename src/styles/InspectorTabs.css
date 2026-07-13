@@ -1,0 +1,41 @@
+.inspector-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  background: #1a1a2e;
+  border-bottom: 1px solid #2a2a3e;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+
+.inspector-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.inspector-tabs::-webkit-scrollbar-thumb {
+  background: #2a2a3e;
+  border-radius: 2px;
+}
+
+.tab-button {
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #a0a0b0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.tab-button:hover {
+  color: #e0e0e0;
+}
+
+.tab-button.active {
+  color: #667eea;
+  border-bottom-color: #667eea;
+}

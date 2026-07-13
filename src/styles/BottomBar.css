@@ -1,0 +1,78 @@
+.bottom-bar {
+  height: 200px;
+  background: #0f0f1e;
+  border-top: 1px solid #1a1a2e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bottom-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  background: #1a1a2e;
+  border-bottom: 1px solid #2a2a3e;
+  flex-shrink: 0;
+  overflow-x: auto;
+}
+
+.bottom-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.bottom-tabs::-webkit-scrollbar-thumb {
+  background: #2a2a3e;
+  border-radius: 2px;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  color: #a0a0b0;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.tab-button:hover {
+  color: #e0e0e0;
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.tab-button.active {
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.1);
+}
+
+.bottom-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #a0a0b0;
+}
+
+.bottom-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bottom-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bottom-content::-webkit-scrollbar-thumb {
+  background: #2a2a3e;
+  border-radius: 3px;
+}
+
+.bottom-content::-webkit-scrollbar-thumb:hover {
+  background: #3a3a4e;
+}
