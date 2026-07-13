@@ -1,0 +1,6 @@
+[package]
+name = "hdp_studio"
+version = "0.1.0"
+
+[dependencies]
+# Placeholder - actual tauri/ Rust dependencies are added by tauri init

@@ -1,0 +1,19 @@
+# Tauri configuration (minimal placeholder)
+{
+  "package": {
+    "productName": "hdp-studio",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "bundle": {
+      "identifier": "com.example.hdpstudio"
+    },
+    "windows": [
+      {
+        "title": "HDP Studio",
+        "width": 1200,
+        "height": 800
+      }
+    ]
+  }
+}

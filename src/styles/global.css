@@ -1,0 +1,46 @@
+/* Global dark theme and layout styles for HDP Studio UI scaffold */
+:root{
+  --bg:#0b0f14;
+  --panel:#0f1720;
+  --muted:#9aa6b2;
+  --accent:#7c4dff;
+  --border:rgba(255,255,255,0.04);
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%;}
+body{margin:0;font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:#e6eef6}
+
+.app-root{display:flex;flex-direction:column;height:100vh}
+.top-nav{height:56px;display:flex;align-items:center;padding:0 16px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-bottom:1px solid var(--border)}
+.top-nav .nav-left{flex:0 0 auto}
+.top-nav .nav-center{flex:1;display:flex;justify-content:center}
+.top-nav .nav-right{flex:0 0 auto;display:flex;gap:8px}
+.top-nav .search{width:60%;max-width:560px;padding:8px 12px;border-radius:6px;border:1px solid var(--border);background:transparent;color:inherit}
+.icon-btn{background:transparent;border:1px solid var(--border);padding:6px;border-radius:6px;color:inherit}
+.user-btn{background:transparent;border:1px solid var(--border);padding:6px 10px;border-radius:6px}
+
+.app-body{display:flex;flex:1;overflow:hidden}
+.left-sidebar{width:220px;background:var(--panel);border-right:1px solid var(--border);padding:12px;overflow:auto}
+.sidebar-item{padding:10px;border-radius:6px;color:var(--muted);margin-bottom:6px}
+.sidebar-item:hover{background:rgba(255,255,255,0.02);color:inherit}
+
+.workspace-area{flex:1;display:flex;align-items:stretch;overflow:auto;padding:16px}
+.workspace-canvas{flex:1;border-radius:8px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;min-height:200px;background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent)}
+.workspace-canvas .welcome{text-align:center;color:var(--muted)}
+
+.right-inspector{width:320px;background:var(--panel);border-left:1px solid var(--border);padding:12px;overflow:auto}
+.inspector-section{margin-bottom:12px;border-bottom:1px solid rgba(255,255,255,0.02);padding-bottom:8px}
+.inspector-section h3{margin:0 0 8px 0}
+.placeholder{color:var(--muted);font-size:13px}
+
+.bottom-panel{height:48px;background:var(--panel);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 12px}
+.bottom-tabs{display:flex;gap:8px}
+.bottom-tab{padding:6px 10px;border-radius:6px;color:var(--muted)}
+
+/* Responsive */
+@media (max-width:900px){
+  .left-sidebar{display:none}
+  .right-inspector{display:none}
+  .top-nav .search{width:70%}
+}
