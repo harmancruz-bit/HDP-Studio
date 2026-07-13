@@ -1,4 +1,5 @@
 import React from 'react'
+import TemplatesGallery from './components/templates/TemplatesGallery'
 import TopNavBar from './components/TopNavBar'
 import LeftSidebar from './components/LeftSidebar'
 import RightInspector from './components/RightInspector'
@@ -8,15 +9,7 @@ import WorkspaceCanvas from './components/WorkspaceCanvas'
 export default function App() {
   return (
     <div className="app-root">
-      <TopNavBar />
-      <div className="app-body">
-        <LeftSidebar />
-        <main className="workspace-area">
-          <WorkspaceCanvas />
-        </main>
-        <RightInspector />
-      </div>
-      <BottomPanel />
+      <TemplatesGallery />
     </div>
   )
 }
