@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import LibrarySection from './LibrarySection'
 import Glyph from './Glyph'
+import { useWorkspaceContext } from '../../context/WorkspaceContext'
 import '../../styles/LeftPanel.css'
 
 export type ProductModule = { name: string; description: string; icon: string; blocks: number }
@@ -31,9 +32,8 @@ export const products: Product[] = [
 
 const resourceLinks = [['Templates', '▦'], ['Favorites', '♥'], ['Recent', '◷'], ['Marketplace', '◈'], ['Documentation', '▤']]
 
-export default function LeftPanel({ onComponentSelect }: { onComponentSelect?: (component: string) => void }) {
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({ 'Mobile Apps': true })
-  const [selected, setSelected] = useState('Mobile Apps')
+export default function LeftPanel() {
+  const { currentProduct, selectModule, selectProduct } = useWorkspaceContext()
   const [query, setQuery] = useState('')
   const normalizedQuery = query.trim().toLowerCase()
   const visibleProducts = useMemo(() => products.map(product => {
@@ -48,7 +48,7 @@ export default function LeftPanel({ onComponentSelect }: { onComponentSelect?: (
     <div className="library-heading"><div><span className="eyebrow">HDP STUDIO</span><h2>Product Library</h2><p>Build complete digital products</p></div><button className="mini-add" aria-label="Create product"><Glyph name="plus" /></button></div>
     <label className={`library-filter ${query ? 'has-query' : ''}`}><Glyph name="search" /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search products and modules..." aria-label="Search products and modules" />{query ? <button className="search-clear" onClick={() => setQuery('')} aria-label="Clear search">×</button> : <kbd>⌘ K</kbd>}</label>
     <div className="library-results"><span>{query ? `${visibleProducts.length} products · ${moduleCount} modules` : 'PRODUCTS'}</span>{query && <button onClick={() => setQuery('')}>Clear</button>}</div>
-    <div className="library-sections">{visibleProducts.map(product => <LibrarySection key={product.name} product={product} isExpanded={normalizedQuery ? true : !!expanded[product.name]} isSelected={selected === product.name} onToggle={() => setExpanded(current => ({ ...current, [product.name]: !current[product.name] }))} onSelect={(module) => { setSelected(product.name); onComponentSelect?.(module) }} />)}{query && !visibleProducts.length && <div className="no-results"><Glyph name="search" /><b>No products or modules found</b><span>Try a different search term.</span></div>}</div>
+    <div className="library-sections">{visibleProducts.map(product => <LibrarySection key={product.name} product={product} isExpanded={normalizedQuery || currentProduct === product.name} isSelected={currentProduct === product.name} onSelectProduct={() => selectProduct(product.name)} onSelectModule={(module) => { if (currentProduct !== product.name) selectProduct(product.name); selectModule(module) }} />)}{query && !visibleProducts.length && <div className="no-results"><Glyph name="search" /><b>No products or modules found</b><span>Try a different search term.</span></div>}</div>
     <nav className="resources" aria-label="Resources"><span className="eyebrow">RESOURCES</span><div>{resourceLinks.map(([label, icon]) => <button key={label}><span>{icon}</span>{label}<Glyph name="arrow" /></button>)}</div></nav>
   </aside>
 }

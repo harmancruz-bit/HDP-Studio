@@ -1,13 +1,15 @@
 import React from 'react'
 import Glyph from './Glyph'
+import { useWorkspaceContext } from '../../context/WorkspaceContext'
 import '../../styles/TopBar.css'
 
 export default function TopBar({ projectName }: { projectName: string }) {
+  const { currentProduct } = useWorkspaceContext()
   return <header className="top-bar">
     <div className="brand-cluster">
       <div className="brand-mark"><span>H</span><i /></div><strong>HDP <em>Studio</em></strong>
       <div className="top-divider" />
-      <button className="project-switcher"><span className="project-dot" />{projectName}<Glyph name="chevron" /></button>
+      <button className="project-switcher" aria-label="Current Product"><span className="project-dot" />{currentProduct ?? projectName}<Glyph name="chevron" /></button>
       <span className="saved-indicator"><i /> All changes saved</span>
     </div>
     <div className="top-actions">

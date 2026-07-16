@@ -4,26 +4,29 @@ import LeftPanel from './LeftPanel'
 import CenterCanvas from './CenterCanvas'
 import RightPanel from './RightPanel'
 import BottomBar from './BottomBar'
+import { WorkspaceProvider } from '../../context/WorkspaceContext'
 import '../../styles/BuilderWorkspace.css'
+import '../../styles/WorkspaceContext.css'
 
 interface BuilderWorkspaceProps {
   projectName: string
 }
 
 export const BuilderWorkspace: React.FC<BuilderWorkspaceProps> = ({ projectName }) => {
-  const [selectedComponent, setSelectedComponent] = useState<string | null>(null)
   const [inspectorTab, setInspectorTab] = useState<'properties' | 'styles' | 'animations' | 'actions' | 'backend' | 'responsive' | 'seo'>('properties')
 
   return (
-    <div className="builder-workspace">
-      <TopBar projectName={projectName} />
-      <div className="workspace-body">
-        <LeftPanel onComponentSelect={setSelectedComponent} />
-        <CenterCanvas />
-        <RightPanel selectedComponent={selectedComponent} activeTab={inspectorTab} onTabChange={setInspectorTab} />
+    <WorkspaceProvider>
+      <div className="builder-workspace">
+        <TopBar projectName={projectName} />
+        <div className="workspace-body">
+          <LeftPanel />
+          <CenterCanvas />
+          <RightPanel activeTab={inspectorTab} onTabChange={setInspectorTab} />
+        </div>
+        <BottomBar />
       </div>
-      <BottomBar />
-    </div>
+    </WorkspaceProvider>
   )
 }
 
