@@ -1,26 +1,7 @@
 import React from 'react'
+import Glyph from './Glyph'
 import '../../styles/CenterCanvas.css'
 
-const CenterCanvas: React.FC = () => {
-  return (
-    <div className="center-canvas">
-      <div className="canvas-grid-background" />
-      <div className="canvas-content">
-        <div className="canvas-empty-state">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" opacity="0.4">
-            <path d="M12 2v20M2 12h20M6 6l12 12M18 6l-12 12" />
-          </svg>
-          <h2>Drag components here</h2>
-          <p>Build your app by dragging components from the library</p>
-          <div className="canvas-actions">
-            <button className="btn-secondary">Start from scratch</button>
-            <span>or</span>
-            <button className="btn-primary">Select a template</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
+export default function CenterCanvas() {
+  return <main className="center-canvas"><div className="canvas-grid-background" /><div className="canvas-toolbar"><button>⌘</button><span>Desktop <Glyph name="chevron" /></span><button>−</button><span>100%</span><button>+</button></div><div className="canvas-content"><section className="canvas-empty-state"><div className="empty-orb"><div className="empty-icon"><Glyph name="layers" /></div><i className="orb-dot one" /><i className="orb-dot two" /><i className="orb-dot three" /></div><span className="eyebrow">YOUR CREATIVE SPACE</span><h1>Start building something <em>great.</em></h1><p>Create your first screen from scratch, begin with a template, or continue where you left off.</p><div className="canvas-actions"><button className="btn-primary"><Glyph name="plus" /> New Project</button><button className="btn-secondary"><Glyph name="layers" /> Choose Template</button><button className="text-button">Open Project <Glyph name="arrow" /></button></div><div className="recent-project"><div className="recent-icon"><Glyph name="code" /></div><div><small>RECENT PROJECT</small><b>Untitled workspace</b><span>Edited just now</span></div><button><Glyph name="arrow" /></button></div></section></div><div className="canvas-status"><span><i /> Ready</span><span>Frame 1440 × 900</span></div></main>
 }
-
-export default CenterCanvas
