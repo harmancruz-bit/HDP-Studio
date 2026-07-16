@@ -3,33 +3,52 @@ import LibrarySection from './LibrarySection'
 import Glyph from './Glyph'
 import '../../styles/LeftPanel.css'
 
-export type LibraryItem = { name: string; description: string; icon: string; badge?: string; preview?: boolean }
-type Category = { title: string; icon: string; items: LibraryItem[] }
+export type ProductModule = { name: string; description: string; icon: string; blocks: number }
+export type Product = { name: string; icon: string; description: string; accent: string; modules: ProductModule[] }
 
-const library: Category[] = [
-  { title: 'Layouts', icon: '▦', items: [{ name: 'Container', description: 'Responsive page wrapper', icon: '□', preview: true }, { name: 'Stack', description: 'Layer elements freely', icon: '◇' }, { name: 'Grid', description: 'Structured grid layout', icon: '▦' }] },
-  { title: 'Sections', icon: '▤', items: [{ name: 'Hero', description: 'High-impact introduction', icon: '✦', badge: 'Popular', preview: true }, { name: 'Features', description: 'Showcase key benefits', icon: '▥' }, { name: 'Call to action', description: 'Convert with a clear next step', icon: '→' }] },
-  { title: 'Components', icon: '◫', items: [{ name: 'Button', description: 'Interactive action trigger', icon: '●' }, { name: 'Card', description: 'Flexible content surface', icon: '▣', preview: true }, { name: 'Image', description: 'Responsive media block', icon: '◩' }] },
-  { title: 'Forms', icon: '☷', items: [{ name: 'Text field', description: 'Single line input', icon: '—' }, { name: 'Select', description: 'Choose from a list', icon: '⌄' }, { name: 'Checkbox', description: 'Toggle a selection', icon: '✓' }] },
-  { title: 'Navigation', icon: '↗', items: [{ name: 'Navbar', description: 'Primary site navigation', icon: '≡' }, { name: 'Tabs', description: 'Switch content views', icon: '⊟' }, { name: 'Sidebar', description: 'Persistent side navigation', icon: '▐' }] },
-  { title: 'Dashboard', icon: '◰', items: [{ name: 'Data table', description: 'Organize structured data', icon: '▦' }, { name: 'Chart', description: 'Visualize your data', icon: '⌁', badge: 'Pro' }, { name: 'Metric', description: 'Highlight a key number', icon: '₊' }] },
-  { title: 'Commerce', icon: '◒', items: [{ name: 'Product card', description: 'Display product details', icon: '▣' }, { name: 'Pricing', description: 'Present plans and prices', icon: '$' }, { name: 'Cart', description: 'Shopping cart summary', icon: '◉' }] },
-  { title: 'Media', icon: '◩', items: [{ name: 'Video', description: 'Embed video content', icon: '▶' }, { name: 'Gallery', description: 'Curated image collection', icon: '▦' }, { name: 'Map', description: 'Interactive location view', icon: '⌖' }] },
-  { title: 'Backend', icon: '◉', items: [{ name: 'API query', description: 'Connect to a data source', icon: '↗' }, { name: 'Database', description: 'Visual data collection', icon: '◫' }, { name: 'Storage', description: 'Manage file assets', icon: '☁' }] },
-  { title: 'AI', icon: '✦', items: [{ name: 'AI prompt', description: 'Prompt-driven interaction', icon: '✦', badge: 'New' }, { name: 'Chat assistant', description: 'Conversational interface', icon: '◌', badge: 'New' }] },
-  { title: 'Marketplace', icon: '♢', items: [{ name: 'Explore plugins', description: 'Extend your workspace', icon: '✦', badge: 'Pro' }, { name: 'Premium blocks', description: 'Polished starter sections', icon: '▣', badge: 'Pro' }] },
+const createModules = (names: Array<[string, string, string]>) => names.map(([name, description, icon], index) => ({ name, description, icon, blocks: 4 + ((index * 3) % 9) }))
+
+export const products: Product[] = [
+  { name: 'Mobile Apps', icon: '📱', accent: '#7c6cff', description: 'Native mobile experiences', modules: createModules([['Authentication', 'Sign in and account access', '◉'], ['Home', 'Primary app experience', '⌂'], ['Profile', 'User identity and preferences', '◌'], ['Settings', 'App controls and preferences', '⚙'], ['Notifications', 'Keep users informed', '◔'], ['Maps', 'Location and discovery', '⌖'], ['Camera', 'Capture and media flows', '◉'], ['Payments', 'Checkout and transactions', '◈']]) },
+  { name: 'Websites', icon: '🌐', accent: '#48b9ff', description: 'Modern web experiences', modules: createModules([['Navigation', 'Headers and site navigation', '≡'], ['Content', 'Editorial content layouts', '▤'], ['Commerce', 'Products and storefronts', '◫'], ['Contact', 'Get in touch and capture leads', '✉']]) },
+  { name: 'Landing Pages', icon: '🎯', accent: '#ff8e6b', description: 'Conversion-focused pages', modules: createModules([['Hero', 'High-impact introduction', '✦'], ['Features', 'Showcase key benefits', '▥'], ['Pricing', 'Plans and packages', '$'], ['Testimonials', 'Build social proof', '♥'], ['FAQ', 'Answer common questions', '?'], ['Footer', 'Complete the page', '▁']]) },
+  { name: 'SaaS', icon: '☁', accent: '#58d6bd', description: 'Subscription software products', modules: createModules([['Authentication', 'Secure account access', '◉'], ['Workspace', 'Teams and projects', '▦'], ['Billing', 'Plans and subscriptions', '◈'], ['Settings', 'Product configuration', '⚙']]) },
+  { name: 'CRM', icon: '🏢', accent: '#a98bff', description: 'Customer relationship systems', modules: createModules([['Authentication', 'Secure account access', '◉'], ['Dashboard', 'Business overview', '◰'], ['Pipeline', 'Manage deal stages', '↗'], ['Contacts', 'Customer directory', '◌'], ['Calendar', 'Schedule activity', '□'], ['Reports', 'Track performance', '▥'], ['Settings', 'Workspace configuration', '⚙']]) },
+  { name: 'ERP', icon: '🏭', accent: '#e9a85d', description: 'Operations and business management', modules: createModules([['Dashboard', 'Operations overview', '◰'], ['Orders', 'Manage order lifecycle', '▤'], ['Procurement', 'Purchasing workflows', '◫'], ['Accounting', 'Financial operations', '$'], ['Settings', 'System configuration', '⚙']]) },
+  { name: 'Marketplace', icon: '🛒', accent: '#f3789c', description: 'Multi-vendor commerce platforms', modules: createModules([['Browse', 'Explore listings and categories', '▦'], ['Product', 'Item detail experiences', '◫'], ['Seller', 'Vendor storefront tools', '◌'], ['Checkout', 'Purchase flow', '◈']]) },
+  { name: 'POS', icon: '💳', accent: '#ffba57', description: 'Point-of-sale experiences', modules: createModules([['Register', 'Fast checkout interface', '▦'], ['Catalog', 'Products and modifiers', '◫'], ['Orders', 'Active order management', '▤'], ['Receipts', 'Customer purchase records', '▤']]) },
+  { name: 'LMS', icon: '🎓', accent: '#6cc6ff', description: 'Learning and course platforms', modules: createModules([['Courses', 'Course library and pathways', '▦'], ['Lessons', 'Learning content experience', '▤'], ['Progress', 'Track learner completion', '◔'], ['Certificates', 'Course achievement records', '✦']]) },
+  { name: 'Medical', icon: '🏥', accent: '#55d3a2', description: 'Healthcare product foundations', modules: createModules([['Patients', 'Patient directory and records', '◌'], ['Appointments', 'Care scheduling', '□'], ['Records', 'Medical documentation', '▤'], ['Portal', 'Patient self-service', '◫']]) },
+  { name: 'Restaurant', icon: '🍔', accent: '#f09863', description: 'Dining and food service products', modules: createModules([['Menu', 'Food and drink catalog', '▤'], ['Ordering', 'Guest order experience', '◫'], ['Tables', 'Floor and seating plan', '▦'], ['Kitchen', 'Preparation workflow', '◰']]) },
+  { name: 'Booking', icon: '🏨', accent: '#7e9dff', description: 'Reservations and scheduling', modules: createModules([['Availability', 'Search open inventory', '□'], ['Reservation', 'Confirm customer bookings', '◫'], ['Calendar', 'Manage the schedule', '▦'], ['Guests', 'Customer stay details', '◌']]) },
+  { name: 'Inventory', icon: '📦', accent: '#d4aa55', description: 'Stock and warehouse systems', modules: createModules([['Overview', 'Stock health at a glance', '◰'], ['Products', 'Catalog and SKUs', '◫'], ['Warehouse', 'Locations and movement', '▦'], ['Suppliers', 'Vendor relationships', '◌']]) },
+  { name: 'Finance', icon: '💰', accent: '#51c9a6', description: 'Financial product experiences', modules: createModules([['Accounts', 'Balances and account views', '◫'], ['Transactions', 'Activity and statements', '▤'], ['Budgets', 'Plan and track spending', '◰'], ['Insights', 'Financial reporting', '▥']]) },
+  { name: 'Dashboards', icon: '📊', accent: '#55b8ff', description: 'Data-rich control centers', modules: createModules([['Overview', 'Top-level performance view', '◰'], ['Analytics', 'Explore key metrics', '▥'], ['Reports', 'Shareable data summaries', '▤'], ['Alerts', 'Important activity signals', '◔']]) },
+  { name: 'Automation', icon: '⚡', accent: '#d98cff', description: 'Workflow and process products', modules: createModules([['Workflows', 'Visual process foundations', '↗'], ['Triggers', 'Start automated actions', '⚡'], ['History', 'Review workflow activity', '▤'], ['Settings', 'Automation controls', '⚙']]) },
+  { name: 'AI Apps', icon: '🤖', accent: '#ab88ff', description: 'Intelligent product interfaces', modules: createModules([['Chat', 'Conversational experiences', '◌'], ['Assistant', 'Task-focused companion UI', '✦'], ['Knowledge', 'Information exploration', '▤'], ['Studio', 'AI product workspace', '◫']]) },
+  { name: 'Blank Project', icon: '📂', accent: '#8c95a8', description: 'Start with a flexible foundation', modules: createModules([['App Shell', 'A clean product starting point', '□'], ['Navigation', 'Set up your product structure', '≡']]) },
 ]
 
+const resourceLinks = [['Templates', '▦'], ['Favorites', '♥'], ['Recent', '◷'], ['Marketplace', '◈'], ['Documentation', '▤']]
+
 export default function LeftPanel({ onComponentSelect }: { onComponentSelect?: (component: string) => void }) {
-  const [expanded, setExpanded] = useState<Record<string, boolean>>({ Layouts: true, Sections: true })
+  const [expanded, setExpanded] = useState<Record<string, boolean>>({ 'Mobile Apps': true })
+  const [selected, setSelected] = useState('Mobile Apps')
   const [query, setQuery] = useState('')
-  const filteredLibrary = useMemo(() => library.map(category => ({ ...category, items: category.items.filter(item => `${item.name} ${item.description}`.toLowerCase().includes(query.toLowerCase())) })).filter(category => category.items.length), [query])
-  const clearSearch = () => setQuery('')
+  const normalizedQuery = query.trim().toLowerCase()
+  const visibleProducts = useMemo(() => products.map(product => {
+    if (!normalizedQuery) return product
+    const productMatches = `${product.name} ${product.description}`.toLowerCase().includes(normalizedQuery)
+    const modules = productMatches ? product.modules : product.modules.filter(module => `${module.name} ${module.description}`.toLowerCase().includes(normalizedQuery))
+    return { ...product, modules }
+  }).filter(product => product.modules.length), [normalizedQuery])
+  const moduleCount = visibleProducts.reduce((total, product) => total + product.modules.length, 0)
+
   return <aside className="left-panel">
-    <div className="library-heading"><div><span className="eyebrow">BUILD SYSTEM</span><h2>Builder Library</h2><p>Reusable building blocks</p></div><button className="mini-add" aria-label="Create component"><Glyph name="plus" /></button></div>
-    <label className={`library-filter ${query ? 'has-query' : ''}`}><Glyph name="search" /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Find a building block..." aria-label="Search building blocks" />{query ? <button className="search-clear" onClick={clearSearch} aria-label="Clear search">×</button> : <kbd>⌘ K</kbd>}</label>
-    <div className="library-results"><span>{query ? `${filteredLibrary.reduce((total, category) => total + category.items.length, 0)} matches` : 'ALL BLOCKS'}</span>{query && <button onClick={clearSearch}>Clear</button>}</div>
-    <div className="library-sections">{filteredLibrary.map(category => <LibrarySection key={category.title} title={category.title} icon={category.icon} items={category.items} isExpanded={query ? true : !!expanded[category.title]} isSearching={!!query} onToggle={() => setExpanded(current => ({ ...current, [category.title]: !current[category.title] }))} onComponentDrag={item => onComponentSelect?.(item)} />)}{query && !filteredLibrary.length && <div className="no-results"><Glyph name="search" /><b>No building blocks found</b><span>Try a different search term.</span></div>}</div>
-    <div className="marketplace-card"><div className="marketplace-art"><i /><i /><i /><span><Glyph name="sparkles" /></span></div><span className="eyebrow">HDP MARKETPLACE</span><h3>Build more with less.</h3><p>Discover premium blocks made for your next idea.</p><button>Explore marketplace <Glyph name="arrow" /></button></div>
+    <div className="library-heading"><div><span className="eyebrow">HDP STUDIO</span><h2>Product Library</h2><p>Build complete digital products</p></div><button className="mini-add" aria-label="Create product"><Glyph name="plus" /></button></div>
+    <label className={`library-filter ${query ? 'has-query' : ''}`}><Glyph name="search" /><input value={query} onChange={event => setQuery(event.target.value)} placeholder="Search products and modules..." aria-label="Search products and modules" />{query ? <button className="search-clear" onClick={() => setQuery('')} aria-label="Clear search">×</button> : <kbd>⌘ K</kbd>}</label>
+    <div className="library-results"><span>{query ? `${visibleProducts.length} products · ${moduleCount} modules` : 'PRODUCTS'}</span>{query && <button onClick={() => setQuery('')}>Clear</button>}</div>
+    <div className="library-sections">{visibleProducts.map(product => <LibrarySection key={product.name} product={product} isExpanded={normalizedQuery ? true : !!expanded[product.name]} isSelected={selected === product.name} onToggle={() => setExpanded(current => ({ ...current, [product.name]: !current[product.name] }))} onSelect={(module) => { setSelected(product.name); onComponentSelect?.(module) }} />)}{query && !visibleProducts.length && <div className="no-results"><Glyph name="search" /><b>No products or modules found</b><span>Try a different search term.</span></div>}</div>
+    <nav className="resources" aria-label="Resources"><span className="eyebrow">RESOURCES</span><div>{resourceLinks.map(([label, icon]) => <button key={label}><span>{icon}</span>{label}<Glyph name="arrow" /></button>)}</div></nav>
   </aside>
 }
